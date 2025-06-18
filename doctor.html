@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IndiaHealthLink</title>
+  <style>
+    * { box-sizing: border-box; scroll-behavior: smooth; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #e0f7fa, #fce4ec 50%, #e8f5e9);
+      color: #333;
+      animation: fadeIn 1.2s ease-in;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    header {
+      background-image: url('file-7nhrxm725Tmpx6gD1V2muK');
+      background-size: cover;
+      background-position: center;
+      background-blend-mode: overlay;
+      background-color: rgba(0, 0, 0, 0.4);
+      color: white;
+      padding: 4em 1em;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      animation: slideIn 1s ease;
+    }
+    @keyframes slideIn {
+      from { transform: translateY(-30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    header h1 {
+      font-size: 4em;
+      margin-bottom: 0.3em;
+      background: linear-gradient(to right, orange, white, green);
+      -webkit-background-clip: text;
+      color: transparent;
+      text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+    }
+    header p {
+      font-size: 1.7em;
+      font-weight: bold;
+      margin-top: 1em;
+      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+      background: rgba(0, 0, 0, 0.3);
+      display: inline-block;
+      padding: 0.3em 1em;
+      border-radius: 12px;
+      animation: fadeIn 1.5s ease-in;
+    }
+    header .sub-desc {
+      font-size: 1.2em;
+      margin-top: 0.8em;
+      display: block;
+      color: #f1f1f1;
+      font-weight: 500;
+      background: rgba(0,0,0,0.2);
+      padding: 0.5em 1em;
+      border-radius: 10px;
+      animation: fadeIn 2s ease-in;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+    }
+    nav a {
+      color: white;
+      padding: 1em 1.5em;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    nav a:hover {
+      background: rgba(255,255,255,0.2);
+      transform: scale(1.1);
+    }
+    main {
+      padding: 2em;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    section {
+      background: linear-gradient(to right, #ffffff, #f0f0ff);
+      padding: 2em;
+      margin-bottom: 2em;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+      transition: transform 0.2s, opacity 0.4s;
+      display: none;
+      opacity: 0;
+    }
+    section.active {
+      display: block;
+      opacity: 1;
+    }
+    section img {
+      max-width: 100%;
+      border-radius: 12px;
+      margin-top: 1em;
+      mix-blend-mode: multiply;
+    }
+    form input, form button, textarea {
+      width: 100%;
+      padding: 0.75em;
+      margin: 0.5em 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    form button {
+      background: #4caf50;
+      color: white;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    form button:hover {
+      background: #388e3c;
+    }
+    .feature-list {
+      list-style: none;
+      padding-left: 0;
+    }
+    .feature-list li {
+      margin-bottom: 0.6em;
+      padding-left: 1.2em;
+      position: relative;
+      animation: fadeIn 1s ease-in;
+    }
+    .feature-list li::before {
+      content: '✨';
+      position: absolute;
+      left: 0;
+      color: #ff9800;
+    }
+    #topBtn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #0072ff;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      padding: 1em 1.2em;
+      font-size: 1.2em;
+      display: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      cursor: pointer;
+      z-index: 999;
+    }
+    #topBtn:hover {
+      background: #0056c0;
+    }
+    @media screen and (max-width: 768px) {
+      header h1 {
+        font-size: 2.5em;
+      }
+      nav a {
+        padding: 0.8em 1em;
+        font-size: 0.9em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>IndiaHealthLink</h1>
+    <p>Find Trusted Doctors, Medicines & Services Near You</p>
+    <span class="sub-desc">Your gateway to smarter healthcare — <span style="color:#FFEB3B;">AI-based doctor suggestions</span>, <span style="color:#03A9F4;">GPS hospital tracking</span>, and <span style="color:#4CAF50;">real-time medicine availability</span>.</span>
+  </header>
+
+  <nav>
+    <a onclick="showTab('home')">Home</a>
+    <a onclick="showTab('doctors')">Find Doctors</a>
+    <a onclick="showTab('medicines')">Medicine Availability</a>
+    <a onclick="showTab('hospitals')">Nearby Hospitals</a>
+    <a onclick="showTab('providers')">For Providers</a>
+  </nav>
+
+  <main>
+    <section id="home" class="active">
+      <h2>About the Service</h2>
+      <p>IndiaHealthLink is a smart healthcare solution connecting users with verified doctors, pharmacies, and hospitals based on your location and health needs.</p>
+      <ul class="feature-list">
+        <li>AI-based doctor matching</li>
+        <li>Live medicine inventory</li>
+        <li>GPS-based hospital distance & route</li>
+        <li>Hospital & pharmacy onboarding (provider panel)</li>
+      </ul>
+      <img src="file-7nhrxm725Tmpx6gD1V2muK" alt="Home Feature" />
+    </section>
+
+    <section id="doctors">
+      <h2>Find Doctors Near You</h2>
+      <p>Allow location access to find doctors nearby and get AI-based recommendations.</p>
+      <button onclick="getLocation()">Get My Location</button>
+      <div id="location-output"></div>
+      <img src="file-8VjYk15aJKD56VGaJ8pK2u" alt="Doctors Nearby" />
+    </section>
+
+    <section id="medicines">
+      <h2>Check Medicine Availability</h2>
+      <p>Enter the medicine name and your area to check local stock:</p>
+      <input type="text" placeholder="Medicine name...">
+      <input type="text" placeholder="Your area or pin code...">
+      <button>Search</button>
+      <img src="file-WjE6pywHmAXqgKz52n7Ark" alt="Medicine Availability" />
+    </section>
+
+    <section id="hospitals">
+      <h2>Hospitals Near You</h2>
+      <p>Use GPS to see hospitals near your location with estimated distance:</p>
+      <button onclick="getLocation()">Show Nearby Hospitals</button>
+      <div id="hospitals-output">No hospitals found nearby. Try updating your location.</div>
+    </section>
+
+    <section id="providers">
+      <h2>Join as a Service Provider</h2>
+      <p>Only hospitals and medical shops can request onboarding to provide their services on the platform.</p>
+      <form>
+        <input type="text" placeholder="Hospital/Pharmacy Name" required />
+        <input type="text" placeholder="Location" required />
+        <textarea rows="4" placeholder="Service Description"></textarea>
+        <button type="submit">Request Onboarding</button>
+      </form>
+      <img src="file-BprFSjkfNdaC4DBoPZsWrg" alt="For Providers" />
+    </section>
+  </main>
+
+  <button id="topBtn" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">↑</button>
+
+  <script>
+    function showTab(id) {
+      document.querySelectorAll('section').forEach(sec => {
+        sec.classList.remove('active');
+        sec.style.opacity = 0;
+      });
+      const target = document.getElementById(id);
+      target.classList.add('active');
+      setTimeout(() => target.style.opacity = 1, 100);
+    }
+
+    function getLocation() {
+      const output = document.getElementById('location-output') || document.getElementById('hospitals-output');
+      if (!navigator.geolocation) {
+        output.innerText = 'Geolocation is not supported by your browser.';
+        return;
+      }
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          const lat = position.coords.latitude;
+          const lon = position.coords.longitude;
+          output.innerText = `Your coordinates: Latitude ${lat}, Longitude ${lon}`;
+        },
+        () => {
+          output.innerText = 'Unable to retrieve your location.';
+        }
+      );
+    }
+
+    const topBtn = document.getElementById("topBtn");
+    window.onscroll = () => {
+      topBtn.style.display = window.scrollY > 400 ? "block" : "none";
+    };
+  </script>
+</body>
+</html>
